@@ -80,32 +80,31 @@ def cv2_loader(path):
 
 
 def adjust_learning_rate(optimizer, epoch):
-    if epoch % 6 == 0 and epoch != 0:
+    if epoch % 8 == 0 and epoch != 0 and epoch != 8:
         for param_group in optimizer.param_groups:
             param_group['lr'] *= 0.1
 
 
 if __name__ == '__main__':
 
-    # model = models.resnet50(pretrained=True)
-    # model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3,
-    #                         bias=False)
-    # model.fc = nn.Linear(2048, 13)
-    # model = model.cuda()
-
-    model = models.densenet201(pretrained=True)
-    model.features.conv0 = nn.Conv2d(1, 64, kernel_size=7, stride=2,
-                            padding=3, bias=False)
-    model.classifier = nn.Linear(1920, 13)
+    model = models.resnet50(pretrained=True)
+    model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3,
+                            bias=False)
+    model.fc = nn.Linear(2048, 13)
     model = model.cuda()
 
+    # model = models.densenet201(pretrained=True)
+    # model.features.conv0 = nn.Conv2d(1, 64, kernel_size=7, stride=2,
+    #                         padding=3, bias=False)
+    # model.classifier = nn.Linear(1920, 13)
+    # model = model.cuda()
 
     # saved_state_dict = torch.load("save.pth")
     # model.load_state_dict(saved_state_dict)
 
     cudnn.benchmark = True
 
-    para_name = "den_sgd_l5e-3_b32"
+    para_name = "res50_sgd_l5e-3_b32"
     batch_size = 32
     lr = 5e-3
     epochs = 50

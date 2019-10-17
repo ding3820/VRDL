@@ -1,7 +1,8 @@
-import os
 import csv
-import numpy as np
+import os
+
 import cv2
+import numpy as np
 import torch
 import torch.nn as nn
 import torchvision.datasets as datasets
@@ -37,13 +38,20 @@ def cv2_loader(path):
 
     return np.expand_dims(img_gray, axis=2)
 
-if __name__ == '__main__':
-    para_name = "c_den_sgd_l5e-3_b32_13.pth"
 
-    model = models.densenet201(pretrained=True)
-    model.features.conv0 = nn.Conv2d(1, 64, kernel_size=7, stride=2,
-                            padding=3, bias=False)
-    model.classifier = nn.Linear(1920, 13)
+if __name__ == '__main__':
+    para_name = "c_res50_sgd_l5e-3_b32_47.pth"
+
+    # model = models.densenet201()
+    # model.features.conv0 = nn.Conv2d(1, 64, kernel_size=7, stride=2,
+    #                         padding=3, bias=False)
+    # model.classifier = nn.Linear(1920, 13)
+    # model = model.cuda()
+
+    model = models.resnet50()
+    model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3,
+                            bias=False)
+    model.fc = nn.Linear(2048, 13)
     model = model.cuda()
 
     saved_state_dict = torch.load(os.path.join("checkpoint", para_name))
@@ -52,7 +60,7 @@ if __name__ == '__main__':
     print('Loading data set...')
     transform_test = transforms.Compose([
         transforms.ToTensor(),
-        transforms.Normalize((0.4525,), (0.2204, )),
+        transforms.Normalize((0.4525,), (0.2204,)),
     ])
 
     test_loader = data.DataLoader(
@@ -84,4 +92,4 @@ if __name__ == '__main__':
         writer.writerow(['id', 'label'])
 
         for i, p in enumerate(pred):
-            writer.writerow(['image_'+str(format(i, '04d')), classes[p]])
+            writer.writerow(['image_' + str(format(i, '04d')), classes[p]])
