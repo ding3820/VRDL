@@ -9,14 +9,7 @@ A PyTorch implementation of YOLOv3, which heavily borrow from https://github.com
 
 ## Inference
 
-| Backbone                | GPU      | FPS      |
-| ----------------------- |:--------:|:--------:|
-| ResNet-101              | Titan X  | 53       |
-| ResNet-152              | Titan X  | 37       |
-| Darknet-53 (paper)      | Titan X  | 76       |
-| Darknet-53 (this impl.) | 1080ti   | 74       |
-
-    $ python3 detect.py --image_folder data/samples/
+    $ python3 detect.py --image_folder data/samples/ --model_def config/yolov3-custom.cfg --class_path data/custom/classes.names --weights_path checkpoints/yolov3_ckpt_xx.pth 
 
 <p align="center"><img src="output/1.png" \></p>
 <p align="center"><img src="output/2.png" \></p>
