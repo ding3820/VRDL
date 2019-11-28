@@ -18,10 +18,10 @@ A PyTorch implementation of YOLOv3, which heavily borrow from https://github.com
 
     $ python3 detect.py --image_folder data/samples/
 
-<p align="center"><img src="assets/giraffe.png" width="480"\></p>
-<p align="center"><img src="assets/dog.png" width="480"\></p>
-<p align="center"><img src="assets/traffic.png" width="480"\></p>
-<p align="center"><img src="assets/messi.png" width="480"\></p>
+<p align="center"><img src="output/1.png" \></p>
+<p align="center"><img src="output/2.png" \></p>
+<p align="center"><img src="output/3.png" \></p>
+<p align="center"><img src="output/4.png" \></p>
 
 ## Train
 ```
