@@ -1,2 +1,4 @@
-# VRDL
-Selected Topics in Visual Recognition using Deep Learning homework repository
+# HW2
+
+* `main.py` training and validating of DCGAN
+* `PGAN.py` Progressive GAN including loading pretrain weights
