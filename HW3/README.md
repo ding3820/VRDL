@@ -75,4 +75,3 @@ _Joseph Redmon, Ali Farhadi_ <br>
 
 ### [eriklindernoren/PyTorch-YOLOv3](https://github.com/eriklindernoren/PyTorch-YOLOv3)
 
-```
