@@ -1,0 +1,12 @@
+.DS_Store/
+.git/
+.idea/
+detectron2/
+__pycache__/
+results/
+output/last_checkpoint
+output/*.0
+output/*.pth
+output/*.json
+datasets/test_images/*
+datasets/train_images/*
